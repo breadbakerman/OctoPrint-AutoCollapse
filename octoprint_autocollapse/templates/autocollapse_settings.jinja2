@@ -2,13 +2,43 @@
 <div>
     <form class="form-horizontal">
         <div class="control-group">
-            <label class="control-label">{{ _('Auto collapse timeout (initial)') }}</label>
+            <label class="control-label">{{ _('Files Panel (initial)') }}</label>
             <div class="controls">
                 <div class="input-append">
-                    <input type="number" min="0" class="input-mini" data-bind="value: settings.plugins.autocollapse.initialTimeout">
-                    <span class="add-on">Sec</span>
+                    <input type="number" min="0" class="input-mini" data-bind="value: settings.plugins.autocollapse.filesInitialTimeout">
+                    <span class="add-on">{{ _('Sec') }}</span>
                 </div>
                 <span class="help-block">{{ _('Timeout before the files accordion auto collapses after initial UI load or refresh. Set to 0 to disable.') }}</span>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">{{ _('Files Panel (interval)') }}</label>
+            <div class="controls">
+                <div class="input-append">
+                    <input type="number" min="0" class="input-mini" data-bind="value: settings.plugins.autocollapse.filesIntervalTimeout">
+                    <span class="add-on">{{ _('Sec') }}</span>
+                </div>
+                <span class="help-block">{{ _('Timeout before the files accordion auto collapses. Set to 0 to disable.') }}</span>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">{{ _('GCode Panel (initial)') }}</label>
+            <div class="controls">
+                <div class="input-append">
+                    <input type="number" min="0" class="input-mini" data-bind="value: settings.plugins.autocollapse.gcodeInitialTimeout">
+                    <span class="add-on">{{ _('Sec') }}</span>
+                </div>
+                <span class="help-block">{{ _('Timeout before the gcode accordion auto collapses after initial UI load or refresh. Set to 0 to disable.') }}</span>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">{{ _('GCode Panel (interval)') }}</label>
+            <div class="controls">
+                <div class="input-append">
+                    <input type="number" min="0" class="input-mini" data-bind="value: settings.plugins.autocollapse.gcodeIntervalTimeout">
+                    <span class="add-on">{{ _('Sec') }}</span>
+                </div>
+                <span class="help-block">{{ _('Timeout before the gcode accordion auto collapses. Set to 0 to disable.') }}</span>
             </div>
         </div>
     </form>

@@ -9,12 +9,15 @@ class AutocollapsePlugin(octoprint.plugin.SettingsPlugin,
 
 	def get_settings_defaults(self):
 		return dict(
-			initialTimeout=30,
+			filesInitialTimeout=1,
+            filesIntervalTimeout=30,
+            gcodeInitialTimeout=1,
+            gcodeIntervalTimeout=30,
 		)
 
 	def get_template_configs(self):
 		return [
-			dict(type="settings", custom_bindings=False, name="Auto Collapse Files")
+			dict(type="settings", custom_bindings=False, name="Auto Collapse")
 		]
 
 	def get_assets(self):
@@ -26,8 +29,14 @@ class AutocollapsePlugin(octoprint.plugin.SettingsPlugin,
 		
 	def on_settings_save(self, data):
 		s = self._settings
-		if "initialTimeout" in data.keys():
-			s.setInt(["initialTimeout"], data["initialTimeout"])
+		if "filesInitialTimeout" in data.keys():
+			s.setInt(["filesInitialTimeout"], data["filesInitialTimeout"])
+        if "filesIntervalTimeout" in data.keys():
+			s.setInt(["filesIntervalTimeout"], data["filesIntervalTimeout"])
+        if "gcodeInitialTimeout" in data.keys():
+			s.setInt(["gcodeInitialTimeout"], data["gcodeInitialTimeout"])
+        if "gcodeIntervalTimeout" in data.keys():
+			s.setInt(["gcodeIntervalTimeout"], data["gcodeIntervalTimeout"])
 		self.on_settings_cleanup()
 		s.save()
 
@@ -59,22 +68,22 @@ class AutocollapsePlugin(octoprint.plugin.SettingsPlugin,
 	def get_update_information(self):
 		return dict(
 			autocollapse=dict(
-				displayName="Autocollapse Plugin",
+				displayName="Auto Collapse",
 				displayVersion=self._plugin_version,
 
 				# version check: github repository
 				type="github_release",
-				user="ntoff",
+				user="breadbakerman",
 				repo="OctoPrint-AutoCollapse",
 				current=self._plugin_version,
 
 				# update method: pip
-				pip="https://github.com/ntoff/OctoPrint-AutoCollapse/archive/{target_version}.zip"
+				pip="https://github.com/breadbakerman/OctoPrint-AutoCollapse/archive/{target_version}.zip"
 			)
 		)
 
-__plugin_name__ = "Auto Collapse Files"
-__plugin_description__ = "Auto collapse the files accordion after loading the UI"
+__plugin_name__ = "Auto Collapse"
+__plugin_description__ = "Auto collapse sidebar panels"
 
 def __plugin_load__():
 	global __plugin_implementation__

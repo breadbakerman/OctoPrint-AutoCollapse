@@ -9,5 +9,5 @@ See wiki -> FAQ for info
 Install ~~via the bundled [Plugin Manager](https://github.com/foosel/OctoPrint/wiki/Plugin:-Plugin-Manager)
 or~~ manually using this URL:
 
-    https://github.com/ntoff/OctoPrint-AutoCollapse/archive/master.zip
+    https://github.com/breadbakerman/OctoPrint-AutoCollapse/archive/master.zip
 
