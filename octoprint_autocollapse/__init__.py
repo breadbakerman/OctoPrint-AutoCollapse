@@ -10,9 +10,9 @@ class AutocollapsePlugin(octoprint.plugin.SettingsPlugin,
 	def get_settings_defaults(self):
 		return dict(
 			filesInitialTimeout=1,
-            filesIntervalTimeout=30,
-            gcodeInitialTimeout=1,
-            gcodeIntervalTimeout=30,
+			filesIntervalTimeout=30,
+			gcodeInitialTimeout=1,
+			gcodeIntervalTimeout=30,
 		)
 
 	def get_template_configs(self):
@@ -26,21 +26,20 @@ class AutocollapsePlugin(octoprint.plugin.SettingsPlugin,
 			css=["css/autocollapse.css"],
 			less=["less/autocollapse.less"]
 		)
-		
+
 	def on_settings_save(self, data):
 		s = self._settings
 		if "filesInitialTimeout" in data.keys():
 			s.setInt(["filesInitialTimeout"], data["filesInitialTimeout"])
-        if "filesIntervalTimeout" in data.keys():
+		if "filesIntervalTimeout" in data.keys():
 			s.setInt(["filesIntervalTimeout"], data["filesIntervalTimeout"])
-        if "gcodeInitialTimeout" in data.keys():
+		if "gcodeInitialTimeout" in data.keys():
 			s.setInt(["gcodeInitialTimeout"], data["gcodeInitialTimeout"])
-        if "gcodeIntervalTimeout" in data.keys():
+		if "gcodeIntervalTimeout" in data.keys():
 			s.setInt(["gcodeIntervalTimeout"], data["gcodeIntervalTimeout"])
 		self.on_settings_cleanup()
 		s.save()
 
-	#function stolen...err borrowed :D from types.py @ 1663
 	def on_settings_cleanup(self):
 		import octoprint.util
 		from octoprint.settings import NoSuchSettingsPath
